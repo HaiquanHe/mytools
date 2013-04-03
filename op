@@ -1,0 +1,42 @@
+#!/usr/bin/expect
+#使用expect登陆服务器脚本
+#dongweiming 2013.04.02
+
+set timeout 5
+set server [lindex $argv 0]
+set port [lindex $argv 1]
+set password [lindex $argv 2]
+set tbjpass YOURPASSWORD
+set s70 YOURPASSWORD
+
+if {$port==""} {
+    set port 58404
+}
+
+if {$argc>3} {
+    puts stderr "参数错误,请使用以下格式: $argv0 [服务器简称,比如8 ] [端口]"
+    exit 1
+}
+
+if {$server=="70"} {
+    spawn ssh -p 58404 dongwm@116.213.213.100
+    expect "password:"
+    send "$tbjpass\n"
+    expect "~"
+    send "ssh -p 58404 dongwm@116.213.213.70\n"
+    expect "password:"
+    send "$s70\n"
+    interact
+} elseif {[regexp {^s} $server found]} {
+    spawn ssh -p 58404 dongwm@116.213.213.100
+    expect "password:"
+    send "$tbjpass\n"
+    expect "~"
+    send "ssh -p 58404 dongwm@$server\n"
+    expect "password:"
+    send "$password\n"
+    interact
+} else {
+    spawn ssh -p $port dongwm@$server
+    interact
+}
