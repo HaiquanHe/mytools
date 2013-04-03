@@ -10,7 +10,7 @@ set tbjpass YOURPASSWORD
 set s70 YOURPASSWORD
 
 if {$port==""} {
-    set port 58404
+    set port YOURPORT
 }
 
 if {$argc>3} {
