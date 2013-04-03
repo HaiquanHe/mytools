@@ -19,7 +19,7 @@ if {$argc>3} {
 }
 
 if {$server=="70"} {
-    spawn ssh -p 58404 dongwm@116.213.213.100
+    spawn ssh -p 58404 dongwm@YOURTBJ_IP
     expect "password:"
     send "$tbjpass\n"
     expect "~"
@@ -28,7 +28,7 @@ if {$server=="70"} {
     send "$s70\n"
     interact
 } elseif {[regexp {^s} $server found]} {
-    spawn ssh -p 58404 dongwm@116.213.213.100
+    spawn ssh -p 58404 dongwm@YOURTBJ_IP
     expect "password:"
     send "$tbjpass\n"
     expect "~"
