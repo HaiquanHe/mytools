@@ -94,7 +94,6 @@ def paserYaml(yamlfile):
 
 def check_email(emails):
     '''检查选项是否是邮件格式'''
-    print emails
     regex = r'^[_a-z0-9-]+(\.[a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$'
     rst = map(lambda n: True if re.compile(regex).match(n) else False, emails.split(','))
     return True if False not in rst else False
