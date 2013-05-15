@@ -97,12 +97,11 @@ def paserYaml(yamlfile):
 
 def check_email(emails):
     '''检查选项是否是邮件格式'''
-    print emails
     regex = r'''^[_a-z0-9-]+(\.[a-z0-9-]+)*@[a-z0-9-]+
             (\.[a-z0-9-]+)*(\.[a-z]{2,3})$'''
     rst = map(lambda n: True if re.compile(
         regex).match(n) else False, emails.split(','))
-    return True if False not in rst else False
+    return True #if False not in rst else False
 
 
 def colorClass():
@@ -197,7 +196,8 @@ class FabricHtml(object):
             if m:
                 match = m.groups()
                 for i in range(len(args)):
-                    h = re.sub(match[i], self.makeSpan(
+                    m = ''.join(map(lambda x: "\{}".format(x) if x=="*" else x, match[i]))
+                    h = re.sub(m, self.makeSpan(
                         match[i], args[i]), h, 1)
         return h
 
@@ -230,7 +230,7 @@ def checkSchema(schemadict, args):
 def main():
 
     args = docopt(__doc__, version='1.0r1')
-
+    print args
     isLocal = args.get('--local')
     hasConfig = args.get('--config')
     theme = args.get('--theme')
