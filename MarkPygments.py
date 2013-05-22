@@ -101,7 +101,7 @@ def check_email(emails):
             (\.[a-z0-9-]+)*(\.[a-z]{2,3})$'''
     rst = map(lambda n: True if re.compile(
         regex).match(n) else False, emails.split(','))
-    return True #if False not in rst else False
+    return True if False not in rst else False
 
 
 def colorClass():
@@ -222,7 +222,6 @@ def checkSchema(schemadict, args):
     try:
         args = schema.validate(args)
     except SchemaError as e:
-        raise
         exit(log(e, error=True))
     return args
 
