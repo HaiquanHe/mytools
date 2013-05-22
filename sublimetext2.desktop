@@ -1,0 +1,15 @@
+[Desktop Entry]
+#自定义了一个sublimetext编辑器的Linux Desktop Entry，将本脚本复制到系统相应目录（/usr/share/applications）
+#请修改下面条目中的Icon和Exec为你程序的路径
+
+Version=1.0
+Categories=Development;
+Type=Application
+Icon=/home/dongwm/sub/Icon/48x48/sublime_text.png
+Exec=/home/dongwm/sub/sublime_text
+Comment=sublime text Editor
+Comment[zh_CN]=sublime text 编辑器
+Name=Sublime Text
+StartupNotify=true
+MimeType=text/plain;text/html;
+Terminal=false
